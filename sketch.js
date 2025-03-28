@@ -5,22 +5,38 @@ const _SPAWN = 0;
 let bkgColor = '#7BDDF6';
 let drop;
 let bacia;
+let x
+let velocidade = 6; 
 
 function preload(){
   drop_xl = loadImage('/img-assets/drop-xl.png');
   drop_l = loadImage('/img-assets/drop-l.png');
   drop_s = loadImage('/img-assets/drop-s.png');
-  // bacia = loadImage('');
+  bacia = loadImage('/img-assets/bacia.png');
+  
 }
 
 function setup() {
   createCanvas(500, 800);
+  x = width / 2;
 }
 
 function draw() {
   background(bkgColor);
-  drawDrop();
+
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= velocidade;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += velocidade;
+  }
+
+  x = constrain(x, 0, width - 150);
+  
+  image(bacia, x, 680, 150, 150)
+  
 }
+
 
 
 
