@@ -1,6 +1,7 @@
 const _SPEED = 0;
 const _QUANTITY = 0;
 const _SPAWN = 0;
+let pontos = 0;
 
 let bkgColor = '#7BDDF6';
 let drop;
@@ -54,4 +55,21 @@ function acellDrop(){
 
 function fallDrop(){
   
+}
+
+ // Checa se a gota tocou a bacia
+ if (dropY + drop_xl.height >= height - 50 &&  // Verifica se a gota chegou na parte inferior
+  dropX + drop_xl.width > baciaX &&        // Verifica se a gota está dentro da largura da bacia
+  dropX < baciaX + baciaWidth) {           // Verifica se a gota não passou da borda da bacia
+aumentarPontos();  // Aumenta os pontos quando a gota toca a bacia
+}
+
+function aumentarPontos() {
+pontos++;  // Aumenta 1 ponto a cada gota capturada pela bacia
+}
+
+function mostrarPontos() {
+  fill(0);  // cor preta
+  textSize(32);  // tamanho
+  text('Pontos: ' + pontos, 20, 40);
 }
